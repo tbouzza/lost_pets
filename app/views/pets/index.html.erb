@@ -1,0 +1,18 @@
+<h1>All the pets found this month :)</h1>
+
+<%= link_to '+ a found pet', new_pet_path, class: 'btn btn-primary' %>
+
+<ul class="mt-5">
+
+  <% @pets.each do |pet| %>
+  <li class='m-2'>
+    <%= link_to pet.name, pet_path(pet) %>
+    - Found on <%= pet.found_at.strftime('%A, %b %d') %>
+    <%= link_to 'Edit', edit_pet_path(pet), class: 'btn btn-warning btn-xs' %>
+    <%= link_to 'Destroy', pet_path(pet),
+                           method: 'delete',
+                           class: 'btn btn-danger btn-xs',
+                           data: { confirm: 'Are you sure?'} %>
+  </li>
+  <% end %>
+</ul>
